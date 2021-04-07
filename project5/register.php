@@ -9,7 +9,7 @@ if (isset($_POST['username'], $_POST['password'], $_POST['email'])) {
 
     if ($stmt->num_rows > 0) {
       // Username exists
-      echo 'Username exists, please choose another!';
+      echo 'Username exists, please choose another!'; // TODO: THIS NEEDS TO BE REDIRECT TO WITH A MESSAGE
     } else {
       //Username doesn't exits, insert new account
       if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email, activation_code) VALUES (?, ?, ?, ?)')) {
@@ -31,12 +31,12 @@ if (isset($_POST['username'], $_POST['password'], $_POST['email'])) {
         echo "<a href='$activate_link'>$activate_link<a/>";
       } else {
         //Something is wrong with the sql statemnt, check to make sure accounts table exists with all 3 fields
-        echo 'Could not prepare statement!';
+        echo 'Could not prepare statement!'; // TODO: THIS NEEDS TO BE REDIRECT TO WITH A MESSAGE
       }
     }
     $stmt->close();
   } else {
-    echo 'Could not prepare statement!';
+    echo 'Could not prepare statement!'; // TODO: THIS NEEDS TO BE REDIRECT TO WITH A MESSAGE
   }
   $con->close();
 }
@@ -81,7 +81,7 @@ if (isset($_POST['email'], $_POST['name'], $_POST['subject'], $_POST['msg'])) {
 <body>
   <section class="section">
     <div class="container">
-
+      <?php $_GET['type'] == 'success' ? (success($_GET['msg'])) : (danger($_GET['msg'])) ?>
       <h1 class="title">
         Register Your Account
       </h1>

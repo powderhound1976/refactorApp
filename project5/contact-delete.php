@@ -12,7 +12,8 @@ if (isset($_GET['id'])) {
     $contact = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$contact) {
-        die('Contact does not exist with that ID');
+        die('Contact does not exist with that ID'); 
+        // TODO: THIS NEEDS TO BE REDIRECT TO CONTACTS.PHP WITH A MESSAGE
     }
 
     if (isset($_GET['confirm'])) {
@@ -20,13 +21,15 @@ if (isset($_GET['id'])) {
             $stmt = $pdo->prepare('DELETE FROM contacts WHERE id = ?');
             $stmt->execute([$_GET['id']]);
             $msg = 'You have deleted the contact.';
+            redirect('contacts.php', $msg, 'danger');
         } else {
-            header('Location: contacts.php');
-            exit;
+            $msg = 'Contact was not deleted.';
+            redirect('contacts.php', $msg, 'warning');
         }
     }
 } else {
     die('No ID Specified');
+    // TODO: THIS NEEDS TO BE REDIRECT TO CONTACTS.PHP WITH A MESSAGE
 }
 
 ?>

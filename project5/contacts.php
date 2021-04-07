@@ -1,16 +1,28 @@
 <?php
 require 'config.php';
-
+$msg = '';
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
 
 $stmt = $pdo->query('SELECT * FROM contacts GROUP BY id');
 
 $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$type = isset($_GET['type']) ?: '';
+
 ?>
 
 <?= template_header('Contacts') ?>
 <?= template_nav() ?>
+<?php
+if (isset($_GET['type'])) {
+    $_GET['type'] == 'success' ? (success($_GET['msg'])) : (danger($_GET['msg']));
+}
+?>
+
+
+
+
 
 <!-- START PAGE CONTENT -->
 <h1 class="title">Contacts Page</h1>

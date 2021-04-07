@@ -13,9 +13,11 @@ if (isset($_GET['email'], $_GET['code'])) {
         $newcode = 'activated';
         $stmt->bind_param('sss', $newcode, $_GET['email'], $_GET['code']);
         $stmt->execute();
-        echo 'Your account has been activated.';
+        $msg = 'Your account has been activated.';
+        redirect('index.php', $msg, 'success');
       } else {
-        echo 'The account is already activated or does not exist!';
+        $msg = 'The account is already activated or does not exist!';
+        redirect('index.php', $msg, 'success');
       }
     }
   }

@@ -25,10 +25,10 @@ if (isset($_GET['id'])) {
             $total_votes += $poll_answer['votes'];
         }
     } else {
-        die('The poll with that id does not exist.');
-    }
+        die('The poll with that id does not exist.'); // TODO: THIS NEEDS TO BE REDIRECT TO POLLS.PHP WITH A MESSAGE
+    } 
 } else {
-    die('No poll ID specified.');
+    die('No poll ID specified.'); // TODO: THIS NEEDS TO BE REDIRECT TO POLLS.PHP WITH A MESSAGE
 }
 
 ?>

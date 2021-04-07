@@ -23,10 +23,12 @@ if (isset($_GET['id'])) {
             exit;
         }
     } else {
-        die('Poll with that ID dows not exist.');
+        $msg = 'Something went wrong! A poll with that ID does not exist.';
+        redirect('polls.php', $msg, 'danger');
     }
 } else {
-    die('No id set');
+    $msg = 'Something went wrong! No ID set.';
+    redirect('polls.php', $msg, 'danger');
 }
 
 ?>

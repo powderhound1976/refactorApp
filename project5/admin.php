@@ -15,6 +15,11 @@ require 'config.php';
     <!-- END LEFT NAV COLUMN-->
     <!-- START RIGHT CONTENT COLUMN-->
     <div class="column column">
+        <?php
+        if (isset($_GET['type'])) {
+            $_GET['type'] == 'success' ? (success($_GET['msg'])) : (danger($_GET['msg']));
+        }
+        ?>
         <h1 class="title"> Page Title Goes Here </h1>
         <p> This is where page content goes. </p>
     </div>

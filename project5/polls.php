@@ -1,6 +1,9 @@
 <?php
 require 'config.php';
 
+$type = isset($_GET['type']) ?: '';
+$msg = isset($_GET['msg']) ?: '';
+
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
 
@@ -15,6 +18,11 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?= template_header('Polls') ?>
 <?= template_nav() ?>
+<?php
+if (isset($_GET['type'])) {
+    $_GET['type'] == 'success' ? (success($_GET['msg'])) : (danger($_GET['msg']));
+}
+?>
 
 <!-- START PAGE CONTENT -->
 <h1 class="title">Polls Page</h1>

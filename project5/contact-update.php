@@ -11,7 +11,8 @@ if (isset($_GET['id'])) {
     $stmt->execute([$_GET['id']]);
     $contact = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$contact) {
-        exit('Contact doesn\'t exist with that id');
+        $msg = 'Something went wrong! Contact doesn\'t exist with that id.';
+        redirect('contacts.php', $msg, 'danger');
     }
 
     if (!empty($_POST)) {
@@ -24,9 +25,11 @@ if (isset($_GET['id'])) {
         $stmt = $pdo->prepare('UPDATE contacts SET id = ?, name = ?, email = ?, phone = ?, title = ?, created = ? WHERE id = ?');
         $stmt->execute([$_GET['id'], $name, $email, $phone, $title, $created, $_GET['id']]);
         $msg = 'Updated successfully!';
+        redirect('contacts.php', $msg, 'success');
     }
 } else {
-    exit('No ID specified');
+    $msg = 'Something went wrong! No ID was specified.';
+    redirect('contacts.php', $msg, 'danger');
 }
 
 ?>
@@ -36,13 +39,7 @@ if (isset($_GET['id'])) {
 
 <!-- START PAGE CONTENT -->
 <h1 class="title">Contact Update</h1>
-<?php if ($msg) : ?>
-    <div class="notification is-success">
-        <h2 class="title is-2">
-            <?php echo $msg; ?>
-        </h2>
-    </div>
-<?php endif; ?>
+
 <form action="contact-update.php?id=<?= $contact['id'] ?>" method="post" class="">
     <div class="field">
         <label for="" class="label">Name</label>

@@ -25,7 +25,11 @@ $stmt->close();
 
 <?= template_header('Profile') ?>
 <?= template_nav() ?>
-
+<?php
+if (isset($_GET['type'])) {
+    $_GET['type'] == 'success' ? (success($_GET['msg'])) : (danger($_GET['msg']));
+}
+?>
 <!-- START PAGE CONTENT -->
 <h1 class="title">Profile</h1>
 <p>Your account details are below:</p>

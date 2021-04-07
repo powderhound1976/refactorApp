@@ -15,6 +15,7 @@ if (!empty($_POST)) {
     $stmt = $pdo->prepare('INSERT INTO contacts VALUES (NULL,?,?,?,?,?)');
     $stmt->execute([$name, $email, $phone, $title, $created]);
     $msg = 'Created successfully!';
+    redirect('contacts.php', $msg, 'success');
 }
 
 ?>

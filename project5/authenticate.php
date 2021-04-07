@@ -35,7 +35,8 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username =?')
       // echo "Welcome " . $_SESSION['name'];
       header('Location: profile.php');
     } else {
-      echo "Incorrect username and/or password.";
+      $msg = 'Incorrect username and/or password.';
+      redirect('login.php', $msg, 'danger');
     }
   }
 }

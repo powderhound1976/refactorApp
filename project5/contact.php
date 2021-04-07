@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 
-$response = '';
+$msg = '';
 
 if (isset($_POST['email'], $_POST['name'], $_POST['subject'], $_POST['msg'])) {
     var_dump($_POST);
@@ -14,25 +14,24 @@ if (isset($_POST['email'], $_POST['name'], $_POST['subject'], $_POST['msg'])) {
     mail($to, $subject, $message, $headers);
 
     // update response
-    $response = 'Message Sent!';
+    $msg = 'Message Sent!';
+    redirect('index.php', $msg, 'success');
 }
 
 ?>
 
 <?= template_header('Home') ?>
 <?= template_nav() ?>
-
+<?php
+if (isset($_GET['type'])) {
+    $_GET['type'] == 'success' ? (success($_GET['msg'])) : (danger($_GET['msg']));
+}
+?>
 <!-- START PAGE CONTENT -->
 <h1 class="title">
     Contact us
 </h1>
-<?php if ($response) : ?>
-    <div class="notification is-success">
-        <h2 class="title is-2">
-            <?php echo $response; ?>
-        </h2>
-    </div>
-<?php endif; ?>
+
 
 <form action="" method="post">
     <div class="field">

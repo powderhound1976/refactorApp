@@ -29,8 +29,10 @@ function pdo_connect_mysql()
       $DATABASE_USER,
       $DATABASE_PASS
     );
+
+    // TODO: THIS EXCEPTION NEEDS TO BE HANDELED BETTER
   } catch (PDOException $exctption) {
-    die('Failed to tonnect to the database.');
+    die('Failed to connect to the database.');
   }
 }
 
@@ -149,34 +151,33 @@ function template_footer()
 EOT;
 }
 
-function success($msg)
+function success($message)
 {
   echo <<<EOT
-   <div class="notification is-warning">
-        <h2 class="title is-2">
-            <?php echo $msg; ?>
-        </h2>
+    <div class="notification is-success">
+      <h2 class="title is-2">
+  EOT;
+  echo $message;
+  echo <<<EOT
+      </h2>
     </div>
 EOT;
 }
 
-function danger($msg)
+function danger($message)
 {
   echo <<<EOT
-   <div class="notification is-danger">
-        <h2 class="title is-2">
-            <?php echo $msg; ?>
-        </h2>
+    <div class="notification is-danger">
+      <h2 class="title is-2">
+  EOT;
+  echo $message;
+  echo <<<EOT
+      </h2>
     </div>
 EOT;
 }
 
 function redirect($location, $msg, $type)
 {
-  header('Location: ' . $location);
-  if ($type == 'success') {
-    success($msg);
-  } else {
-    danger($msg);
-  }
+  header('Location: ' . $location . '?msg=' . $msg . '&type=' . $type);
 }
