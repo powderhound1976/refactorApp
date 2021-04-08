@@ -1,6 +1,7 @@
 <?php
 require 'config.php';
 
+$page = 'polls.php';
 $type = isset($_GET['type']) ?: '';
 $msg = isset($_GET['msg']) ?: '';
 

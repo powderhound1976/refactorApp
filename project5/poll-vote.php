@@ -1,6 +1,7 @@
 <?php
 require 'config.php';
 
+$page = 'poll-vote.php';
 $pdo = pdo_connect_mysql();
 
 if (isset($_GET['id'])) {

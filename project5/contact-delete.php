@@ -1,6 +1,7 @@
 <?php
 require 'config.php';
 
+$page = 'contact-delete.php';
 $pdo = pdo_connect_mysql();
 
 $msg = '';

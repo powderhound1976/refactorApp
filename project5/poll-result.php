@@ -1,5 +1,7 @@
 <?php
 require 'config.php';
+
+$page = 'poll-request.php';
 $pdo = pdo_connect_mysql();
 
 if (isset($_GET['id'])) {
@@ -25,10 +27,10 @@ if (isset($_GET['id'])) {
             $total_votes += $poll_answer['votes'];
         }
     } else {
-        die('The poll with that id does not exist.'); // TODO: THIS NEEDS TO BE REDIRECT TO POLLS.PHP WITH A MESSAGE
+        redirect('polls.php', 'The poll with that id does not exist.', 'danger');
     } 
 } else {
-    die('No poll ID specified.'); // TODO: THIS NEEDS TO BE REDIRECT TO POLLS.PHP WITH A MESSAGE
+    redirect('polls.php', 'No poll ID specified.', 'danger');
 }
 
 ?>

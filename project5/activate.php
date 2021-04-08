@@ -1,5 +1,7 @@
 <?php
 require 'config.php';
+
+$page = 'activate.php';
 //var_dump($_GET);
 
 if (isset($_GET['email'], $_GET['code'])) {

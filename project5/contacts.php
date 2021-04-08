@@ -1,5 +1,7 @@
 <?php
 require 'config.php';
+
+$page = 'contacts.php';
 $msg = '';
 // Connect to MySQL
 $pdo = pdo_connect_mysql();

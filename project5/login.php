@@ -1,6 +1,6 @@
 <?php
 require 'config.php';
-
+$page = 'login.php';
 //additional php code for this page goes here
 
 ?>

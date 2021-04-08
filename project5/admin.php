@@ -1,6 +1,7 @@
 <?php
 require 'config.php';
 
+$page = 'admin.php';
 //additional php code for this page goes here
 
 ?>

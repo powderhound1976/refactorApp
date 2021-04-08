@@ -1,6 +1,8 @@
 <?php
 require 'config.php';
 
+$page = 'poll-create.php';
+
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
 

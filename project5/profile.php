@@ -1,5 +1,7 @@
 <?php
 require 'config.php';
+
+$page = 'profile.php';
 // We need to start sessions, so you should alwasys start sessions using the below code.
 session_start();
 

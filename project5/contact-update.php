@@ -1,6 +1,8 @@
 <?php
 require 'config.php';
 
+$page = 'contact-update.php';
+
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
 $msg = '';

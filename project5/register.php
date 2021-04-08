@@ -1,6 +1,8 @@
 <?php
 require 'config.php';
 
+$page = 'register.php';
+
 if (isset($_POST['username'], $_POST['password'], $_POST['email'])) {
   if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
     $stmt->bind_param('s', $_POST['username']);
@@ -9,7 +11,7 @@ if (isset($_POST['username'], $_POST['password'], $_POST['email'])) {
 
     if ($stmt->num_rows > 0) {
       // Username exists
-      echo 'Username exists, please choose another!'; // TODO: THIS NEEDS TO BE REDIRECT TO WITH A MESSAGE
+      redirect('register.php', 'Username exists, please choose another!', 'danger');
     } else {
       //Username doesn't exits, insert new account
       if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email, activation_code) VALUES (?, ?, ?, ?)')) {
@@ -26,17 +28,17 @@ if (isset($_POST['username'], $_POST['password'], $_POST['email'])) {
           . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n"
           . 'MIME-VERSION: 1.0' . "\r\n"
           . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-        $activate_link = 'http://icarus.cs.weber.edu/~cr92915/web3400/project3/activate.php?email=' . $_POST['email'] . '&code=' . $uniqid;
+        $activate_link = 'http://icarus.cs.weber.edu/~cr92915/web3400/project5/activate.php?email=' . $_POST['email'] . '&code=' . $uniqid;
         $message = '<p>Please click the following link to activate your account: <a ref="' . $activate_link . '">' . $activate_link . '</a></p>';
         echo "<a href='$activate_link'>$activate_link<a/>";
       } else {
         //Something is wrong with the sql statemnt, check to make sure accounts table exists with all 3 fields
-        echo 'Could not prepare statement!'; // TODO: THIS NEEDS TO BE REDIRECT TO WITH A MESSAGE
+        redirect('register.php', 'Could not prepare statement!', 'danger');
       }
     }
     $stmt->close();
   } else {
-    echo 'Could not prepare statement!'; // TODO: THIS NEEDS TO BE REDIRECT TO WITH A MESSAGE
+    redirect('register.php', 'Could not prepare statement!', 'danger');
   }
   $con->close();
 }
@@ -81,7 +83,11 @@ if (isset($_POST['email'], $_POST['name'], $_POST['subject'], $_POST['msg'])) {
 <body>
   <section class="section">
     <div class="container">
-      <?php $_GET['type'] == 'success' ? (success($_GET['msg'])) : (danger($_GET['msg'])) ?>
+      <?php
+      if (isset($_GET['type'])) {
+        $_GET['type'] == 'success' ? (success($_GET['msg'])) : (danger($_GET['msg']));
+      }
+      ?>
       <h1 class="title">
         Register Your Account
       </h1>
