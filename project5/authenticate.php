@@ -1,8 +1,8 @@
 <?php
-
 require 'config.php';
-session_start();
 
+session_start();
+$page = 'authenticate.php';
 // var_dump($_POST);
 
 if (!isset($_POST['username'], $_POST['password'])) {

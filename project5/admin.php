@@ -12,6 +12,8 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: login.php');
     exit;
 }
+$page = 'admin.php';
+//additional php code for this page goes here
 
 ?>
 

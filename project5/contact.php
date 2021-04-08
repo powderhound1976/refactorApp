@@ -1,6 +1,7 @@
 <?php
 require 'config.php';
 
+$page = 'contact.php';
 $msg = '';
 
 if (isset($_POST['email'], $_POST['name'], $_POST['subject'], $_POST['msg'])) {

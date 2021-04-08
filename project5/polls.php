@@ -13,6 +13,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+$page = 'polls.php';
 $type = isset($_GET['type']) ?: '';
 $msg = isset($_GET['msg']) ?: '';
 

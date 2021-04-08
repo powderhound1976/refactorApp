@@ -1,6 +1,7 @@
 <?php
 require 'config.php';
 
+<<<<<<< HEAD
 // Additional php code for this page goes here
 
 // We need to start sessions, so you should alwasys start sessions using the below code.
@@ -13,6 +14,9 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+=======
+$page = 'contact-delete.php';
+>>>>>>> master
 $pdo = pdo_connect_mysql();
 
 $msg = '';

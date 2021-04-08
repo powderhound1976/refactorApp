@@ -12,6 +12,7 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: login.php');
     exit;
 }
+$page = 'poll-create.php';
 
 // Connect to MySQL
 $pdo = pdo_connect_mysql();

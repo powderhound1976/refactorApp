@@ -13,6 +13,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+$page = 'poll-vote.php';
 $pdo = pdo_connect_mysql();
 
 if (isset($_GET['id'])) {

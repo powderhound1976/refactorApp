@@ -13,6 +13,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+$page = 'contacts.php';
 $msg = '';
 
 // Connect to MySQL

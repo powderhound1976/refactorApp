@@ -30,7 +30,7 @@ function pdo_connect_mysql()
       $DATABASE_PASS
     );
 
-    // TODO: THIS EXCEPTION NEEDS TO BE HANDELED BETTER
+
   } catch (PDOException $exctption) {
     die('Failed to connect to the database.');
   }

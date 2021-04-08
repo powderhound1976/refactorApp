@@ -13,6 +13,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+$page = 'poll-delete.php';
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
 
@@ -23,7 +24,7 @@ if (isset($_GET['id'])) {
     $poll = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$poll) {
-        die ('Poll does not exist with that ID'); // TODO: THIS NEEDS TO BE REDIRECT TO CONTACTS.PHP WITH A MESSAGE
+        redirect('polls.php', 'Poll does not exist with that ID.', 'danger');
     }
 
     if (isset($_GET['confirm'])) {
@@ -39,7 +40,7 @@ if (isset($_GET['id'])) {
         }
     }
 } else {
-    die ('No ID Specified'); // TODO: THIS NEEDS TO BE REDIRECT TO CONTACTS.PHP WITH A MESSAGE
+    redirect('polls.php', 'No ID Specified', 'danger');
 }
 
 ?>

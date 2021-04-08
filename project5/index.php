@@ -1,6 +1,8 @@
 <?php
 require 'config.php';
 
+$page = 'index.php';
+
 //additional php code for this page goes here
 
 ?>
