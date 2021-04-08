@@ -1,7 +1,21 @@
 <?php
 require 'config.php';
 
+<<<<<<< HEAD
+// Additional php code for this page goes here
+
+// We need to start sessions, so you should alwasys start sessions using the below code.
+session_start();
+
+// if not logged in redirect to login page
+// PASSWORD PROTECTED
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
+    exit;
+}
+=======
 $page = 'contact-update.php';
+>>>>>>> master
 
 // Connect to MySQL
 $pdo = pdo_connect_mysql();

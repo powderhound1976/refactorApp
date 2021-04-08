@@ -1,6 +1,17 @@
 <?php
 require 'config.php';
 
+// Additional php code for this page goes here
+
+// We need to start sessions, so you should alwasys start sessions using the below code.
+session_start();
+
+// if not logged in redirect to login page
+// PASSWORD PROTECTED
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
+    exit;
+}
 $page = 'poll-create.php';
 
 // Connect to MySQL
